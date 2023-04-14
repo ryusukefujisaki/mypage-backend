@@ -10,4 +10,4 @@ WORKDIR $APP_ROOT
 
 RUN bundle install
 
-CMD bash -c "rm -f tmp/pids/server.pid && rails server"
+CMD bash -c "rails db:migrate && rm -f tmp/pids/server.pid && rails server"
