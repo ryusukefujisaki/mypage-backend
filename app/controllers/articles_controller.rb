@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
+      @article.image.purge if params[:image_delete_flg] === 'true'
       render json: @article
     else
       render json: @article.errors, status: :unprocessable_entity
