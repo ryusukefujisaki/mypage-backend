@@ -5,12 +5,12 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
 
-    render json: @articles
+    render json: @articles, methods: [:image_url]
   end
 
   # GET /articles/1
   def show
-    render json: @article
+    render json: @article, methods: [:image_url]
   end
 
   # POST /articles
@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
+      @article.image.purge if params[:image_delete_flg] === 'true'
       render json: @article
     else
       render json: @article.errors, status: :unprocessable_entity
@@ -47,6 +48,7 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       # params.fetch(:article, {})
-      params.require(:article).permit(:title, :content)
+      # params.require(:article).permit(:title, :content)
+      params.permit(:title, :content, :image)
     end
 end
