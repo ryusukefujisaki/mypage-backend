@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
-    render json: @article
+    render json: @article, methods: [:image_url]
   end
 
   # POST /articles
