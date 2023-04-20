@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
 
-    render json: @articles
+    render json: @articles, methods: [:image_url]
   end
 
   # GET /articles/1
