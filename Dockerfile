@@ -10,4 +10,6 @@ WORKDIR $APP_ROOT
 
 RUN bundle install
 
+VOLUME $APP_ROOT/tmp/sockets
+
 CMD bash -c "rails db:migrate && rm -f tmp/pids/server.pid && rails server"
