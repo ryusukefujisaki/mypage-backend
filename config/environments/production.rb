@@ -4,8 +4,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << ENV["HOST_NAME"]
 
+  Rails.application.routes.default_url_options[:protocol] = 'https'
   Rails.application.routes.default_url_options[:host] = ENV["HOST_NAME"]
-  Rails.application.routes.default_url_options[:port] = 80
+  Rails.application.routes.default_url_options[:port] = 443
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
   config.middleware.use ActionDispatch::Flash
 
