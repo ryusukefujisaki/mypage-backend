@@ -4,6 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << ENV["HOST_NAME"]
 
+  Rails.application.routes.default_url_options[:protocol] = 'http'
   Rails.application.routes.default_url_options[:host] = ENV["HOST_NAME"]
   Rails.application.routes.default_url_options[:port] = 10081
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
