@@ -5,7 +5,7 @@ Rails.application.configure do
   config.hosts << ENV["HOST_NAME"]
 
   Rails.application.routes.default_url_options[:host] = ENV["HOST_NAME"]
-  Rails.application.routes.default_url_options[:port] = 10081
+  Rails.application.routes.default_url_options[:port] = 80
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
   config.middleware.use ActionDispatch::Flash
 
